@@ -14,7 +14,11 @@ const users = require('./routes/users')
 onerror(app)
 
 //服务端支持跨域
-
+app.use(cors({
+  //origin:'*', //允许所有域可跨域，但是credentials必须false
+  origin:'http://localhost:8080', //支持前端哪个域可以跨域
+  credentials:true //允许跨域时带cookie
+}))
 
 // middlewares
 app.use(bodyparser({
