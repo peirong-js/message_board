@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const { register, login } = require('../controller/user')
+const loginCheck = require('../middleware/loginCheck')
 
 router.prefix('/users')
 /* 
@@ -11,6 +12,14 @@ router.get('/bar', function (ctx, next) {
   ctx.body = 'this is a users/bar response'
 })
  */
+
+ //获取用户信息
+ router.get('/getUserInfo', loginCheck ,async(ctx,next)=>{
+   ctx.body ={
+     errno:0,
+     data:ctx.session.userInfo
+   }
+ })
 
 //登录
 router.post('/login',async(ctx,next)=>{

@@ -8,7 +8,7 @@ const MessageSchema = mongoose.Schema({
     },
     username:String
 },{
-    timestramp:true
+    timestamps:true
 })
 
 const MessageModel = mongoose.model('message',MessageSchema)

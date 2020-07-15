@@ -10,6 +10,7 @@ const session = require('koa-generic-session')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const message = require('./routes/message')
 
 // error handler
 onerror(app)
@@ -54,6 +55,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(message.routes(), message.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
